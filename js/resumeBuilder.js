@@ -2,8 +2,10 @@ var bio = {
     "name": "Shelly Davis",
     "role": "Front-End Web Developer",
     "contacts": {
+        "mobile": "555-555-5555",
         "email": "dmdshelly@gmail.com",
         "github": "dmdshelly",
+        "twitter": "@notwitter",
         "location": "San Jose, CA"
     },
     "welcomeMessage": "Welcome to My Resume",
@@ -14,29 +16,35 @@ var bio = {
 bio.display = function(){
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
         var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
         var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
         var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+        var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
         var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
         var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
         var formattedWelcome = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
 
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
+        $("#topContacts").append(formattedMobile);
         $("#topContacts").append(formattedEmail);
         $("#topContacts").append(formattedGithub);
+        $("#topContacts").append(formattedTwitter);
         $("#topContacts").append(formattedLocation);
         $("#header").append(formattedPic);
         $("#header").append(formattedWelcome);
 
+        $("#footerContacts").append(formattedMobile);
         $("#footerContacts").append(formattedEmail);
         $("#footerContacts").append(formattedGithub);
+        $("#footerContacts").append(formattedTwitter);
         $("#footerContacts").append(formattedLocation);
 
 
         if(bio.skills.length > 0){
                     $("#header").append(HTMLskillsStart);
 
-                    for(var index=0; index<bio.skills.length; index++){
+                    for(var index = 0; index < bio.skills.length; index++){
                     var formattedSkill = HTMLskills.replace("%data%", bio.skills[index]);
                     $("#skills:last").append(formattedSkill);
                 }
@@ -52,7 +60,7 @@ var education = {
             "name": "San Jose State University",
             "location": "San Jose, CA",
             "degree": "M.A.",
-            "major": "Sociology",
+            "majors": ["Sociology", "Imaginary Second Major"],
             "dates": 1998,
             "url": "http://www.sjsu.edu/"
         },
@@ -60,7 +68,7 @@ var education = {
             "name": "Ambassador College",
             "location": "Big Sandy, TX",
             "degree": "B.A.",
-            "major": "Theology",
+            "majors": ["Theology", "Imaginary Second Major"],
             "dates": 1993,
             "url": "https://ambassador.edu/"
         }
@@ -85,92 +93,92 @@ var education = {
         {
             "title": "JavaScript Basics",
             "school": "Udacity",
-            "dates": 2016,
+            "date": 2016,
             "url": "https://www.udacity.com/course/javascript-basics--ud804"
         },
         {
             "title": "How to Use Git and GitHub",
             "school": "Udacity",
-            "dates": 2016,
+            "date": 2016,
             "url": "https://www.udacity.com/course/how-to-use-git-and-github--ud775"
         },
         {
             "title": "Adventures in Web Animations",
             "school": "Code School",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.codeschool.com/courses/adventures-in-web-animations"
         },
         {
             "title": "Try Git",
             "school": "Code School",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.codeschool.com/courses/try-git"
         },
         {
             "title": "Blasting Off With Bootstrap",
             "school": "Code School",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.codeschool.com/courses/blasting-off-with-bootstrap"
         },
         {
             "title": "JavaScript Programming: Learn By Making a Mobile Game",
             "school": "Udemy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.udemy.com/master-javascript/learn/#/"
         },
         {
             "title": "jQuery",
             "school": "Codecademy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.codecademy.com/learn/jquery"
         },
         {
             "title": "JavaScript",
             "school": "Codecademy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.codecademy.com/learn/javascript"
         },
         {
             "title": "Build Responsive Real World Websites with HTML5 and CSS3",
             "school": "Udemy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.udemy.com/design-and-develop-a-killer-website-with-html5-and-css3/learn/#/"
         },
         {
             "title": "HTML/JS: Making Webpages Interactive",
             "school": "Khan Academy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.khanacademy.org/computing/computer-programming/html-css-js"
         },
         {
             "title": "Intro to JS: Drawing & Animation",
             "school": "Khan Academy",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.khanacademy.org/computing/computer-programming/programming"
         },
         {
             "title": "Make a Website",
             "school": "Codecademy",
-            "dates": 2014,
+            "date": 2014,
             "url": "https://www.codecademy.com/en/skills/make-a-website"
         },
         {
             "title": "HTML & CSS",
             "school": "Codecademy",
-            "dates": 2014,
+            "date": 2014,
             "url": "https://www.codecademy.com/learn/web"
         },
         {
             "title": "Adobe Photoshop CS5 Essentials",
             "school": "Total Training",
-            "dates": 2012,
+            "date": 2012,
             "url": "http://totaltraining.com/store/photoshop-cs5-extended-essentials/?view=catalog"
         }
     ]
 };
 
 education.display = function(){
-        for(var index=0; index<education.schools.length; index++){
+        for(var index = 0; index < education.schools.length; index++){
             $("#education").append(HTMLschoolStart);
 
             var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[index].name).replace("#", education.schools[index].url);
@@ -178,12 +186,15 @@ education.display = function(){
             var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
             var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[index].dates);
             var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[index].location);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[index].major);
 
             $(".education-entry:last").append(formattedSchoolNameDegree);
             $(".education-entry:last").append(formattedSchoolDates);
             $(".education-entry:last").append(formattedSchoolLocation);
-            $(".education-entry:last").append(formattedSchoolMajor);
+
+            for(var major = 0; major < education.schools[index].majors.length; major++){
+                var formattedSchoolMajors = HTMLschoolMajor.replace("%data%", education.schools[index].majors[major]);
+                $(".education-entry:last").append(formattedSchoolMajors);
+            }
         }
 
         $("#education").append(HTMLonlineClasses.replace("Online Classes", "Professional Development"));
@@ -209,7 +220,7 @@ education.display = function(){
             var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[index].title);
             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[index].school);
             var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[index].dates);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[index].date);
             var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[index].url).replace("#", education.onlineCourses[index].url);
 
             $(".education-entry:last").append(formattedOnlineTitleSchool);
@@ -257,7 +268,7 @@ var work = {
 };
 
 work.display = function(){
-        for(var index=0; index<work.jobs.length; index++){
+        for(var index = 0; index < work.jobs.length; index++){
             $("#workExperience").append(HTMLworkStart);
 
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[index].employer);
@@ -283,30 +294,33 @@ var projects = {
             "title": "Arcade Game",
             "dates": "pending",
             "description": "classic arcade game clone",
-            "images": "images/arcadegamesmall.jpg"
+            "images": ["images/arcadegamesmall.jpg", "images/volcanosmall.jpg"]
         },
         {
             "title": "Neighborhood Map",
             "dates":"pending",
             "description": "neighborhood map including location markers and browsing",
-            "images": "images/foldingmapsmall.jpg"
+            "images": ["images/foldingmapsmall.jpg", "images/firesmall.jpg"]
         }
     ]
 };
 
 projects.display = function displayProjects(){
-        for(var index=0; index<projects.projects.length; index++){
+        for(var index = 0; index < projects.projects.length; index++){
             $("#projects").append(HTMLprojectStart);
 
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[index].title);
             var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[index].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[index].description);
-            var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[index].images);
 
             $(".project-entry:last").append(formattedProjectTitle);
             $(".project-entry:last").append(formattedProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
-            $(".project-entry:last").append(formattedProjectImage);
+
+            for (var image = 0; image < projects.projects[index].images.length; image++){
+                var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[index].images[image]);
+                $(".project-entry:last").append(formattedProjectImage);
+            }
         }
 };
 
